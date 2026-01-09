@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chave Pix</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .cpf {
+      font-size: 18px;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    button {
+      background: #00c853;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #00a845;
+    }
+
+    .msg {
+      margin-top: 10px;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Chave Pix (CPF)</h2>
+    <div class="cpf" id="pixCpf">06771768996</div>
+    <button onclick="copiarPix()">Copiar CPF</button>
+    <div class="msg" id="msg">CPF copiado ✅</div>
+  </div>
+
+  <script>
+    function copiarPix() {
+      const cpf = document.getElementById("pixCpf").innerText;
+      navigator.clipboard.writeText(cpf).then(() => {
+        document.getElementById("msg").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("msg").style.display = "none";
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
