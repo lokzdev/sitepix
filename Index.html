@@ -2,40 +2,57 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chave Pix</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
     }
 
     .card {
       background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
-      width: 300px;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
     }
 
     .cpf {
-      font-size: 18px;
-      margin: 15px 0;
+      font-size: 20px;
+      margin: 16px 0;
       font-weight: bold;
+      word-break: break-all;
     }
 
     button {
       background: #00c853;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 14px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
+      width: 100%;
+      transition: background 0.2s;
     }
 
     button:hover {
@@ -43,9 +60,21 @@
     }
 
     .msg {
-      margin-top: 10px;
+      margin-top: 12px;
       color: green;
       display: none;
+      font-size: 14px;
+    }
+
+    /* Ajustes extras para telas muito pequenas */
+    @media (max-width: 360px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      .cpf {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -62,9 +91,10 @@
     function copiarPix() {
       const cpf = document.getElementById("pixCpf").innerText;
       navigator.clipboard.writeText(cpf).then(() => {
-        document.getElementById("msg").style.display = "block";
+        const msg = document.getElementById("msg");
+        msg.style.display = "block";
         setTimeout(() => {
-          document.getElementById("msg").style.display = "none";
+          msg.style.display = "none";
         }, 2000);
       });
     }
